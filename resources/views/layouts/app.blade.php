@@ -16,10 +16,10 @@
 <a href="{{ route('shop.index') }}" @if(request()->routeIs('shop.*')) aria-current="page" @endif>Jelajahi Produk</a>
 @auth
     @if(auth()->user()->role==='customer')
-        @if(Route::has('cart.index'))
+        @if(\Illuminate\Support\Facades\Route::has('cart.index'))
             <a href="{{ route('cart.index') }}" @if(request()->routeIs('cart.*')) aria-current="page" @endif>Keranjang ({{ array_sum(session('cart',[])) }})</a>
         @endif
-        @if(Route::has('orders.index'))
+        @if(\Illuminate\Support\Facades\Route::has('orders.index'))
             <a href="{{ route('orders.index') }}" @if(request()->routeIs('orders.*')) aria-current="page" @endif>Pesanan</a>
         @endif
     @else

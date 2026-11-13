@@ -12,7 +12,7 @@
             <a class="brand" href="{{ route('admin.dashboard') }}">ruangbelanja.</a>
             <div class="eyebrow">Ruang Pengelola</div>
             @foreach([['admin.dashboard', 'Ringkasan'], ['admin.categories.index', 'Kategori'], ['admin.products.index', 'Produk'], ['admin.stock.index', 'Stok & Barang Masuk'], ['admin.shipping.index', 'Ekspedisi'], ['admin.orders.index', 'Transaksi']] as [$route, $label])
-                @if(Route::has($route))
+                @if(\Illuminate\Support\Facades\Route::has($route))
                     <a href="{{ route($route) }}" @if(request()->routeIs($route === 'admin.dashboard' ? $route : str_replace('.index', '.*', $route))) aria-current="page" @endif>{{ $label }}</a>
                 @endif
             @endforeach

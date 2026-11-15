@@ -1,535 +1,166 @@
-/* ==========================================================================
-   ruangbelanja. — Modern Minimalist Storefront & Admin Stylesheet (M0–M8)
-   ========================================================================== */
-
-:root {
-  --bg: #f6f7f5;
-  --surface: #ffffff;
-  --surface-alt: #fafbfa;
-  --text: #18221d;
-  --text-secondary: #3f4e47;
-  --muted: #64746c;
-  --border: #e3e8e5;
-  --border-strong: #cdd6d1;
-
-  --primary: #2d5a40;
-  --primary-hover: #214430;
-  --primary-soft: #ebf3ee;
-  --primary-ring: rgba(45, 90, 64, 0.22);
-
-  --danger: #b42318;
-  --danger-bg: #fef3f2;
-  --danger-border: #fecdca;
-
-  --warning: #b54708;
-  --warning-bg: #fffaeb;
-  --warning-border: #fedf89;
-
-  --success: #067647;
-  --success-bg: #ecfdf3;
-  --success-border: #abefc6;
-
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-
-  --shadow-xs: 0 1px 2px rgba(16, 24, 20, 0.04);
-  --shadow-sm: 0 4px 12px rgba(16, 24, 20, 0.05), 0 1px 3px rgba(16, 24, 20, 0.03);
-  --shadow-md: 0 12px 28px rgba(16, 24, 20, 0.08), 0 2px 6px rgba(16, 24, 20, 0.04);
+/* === Peningkatan Tampilan Layout Admin === */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+.admin-wrap {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8fafc;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+.admin-side {
+    width: 250px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-html {
-  scroll-behavior: smooth;
+.admin-side .brand {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    padding: 0 12px;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.admin-side .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    padding: 0 12px;
+    margin-bottom: 12px;
 }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.18s ease;
+.admin-side a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.15s ease;
 }
 
-a:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
+.admin-side a:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.admin-side a[aria-current="page"] {
+    background-color: #ecfdf5;
+    color: #166534;
+    font-weight: 600;
 }
 
-/* ---------- Layout Container ---------- */
-.container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
+.admin-side form {
+    margin-top: auto;
+    padding-top: 16px;
 }
 
-/* ---------- Top Announcement Bar ---------- */
-.top-note {
-  background: linear-gradient(90deg, #234732 0%, #2d5a40 50%, #234732 100%);
-  color: #f2f7f4;
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  padding: 7px 16px;
+.admin-side .btn-light {
+    width: 100%;
+    text-align: center;
 }
 
-/* ---------- Sticky Glass Header & Navigation ---------- */
-.site-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+.admin-main {
+    flex: 1;
+    padding: 28px 36px;
+    max-width: 1100px;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 8px 18px;
-  min-height: 68px;
-  flex-wrap: wrap;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.admin-context {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #64748b;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.brand {
-  font-weight: 800;
-  font-size: 1.28rem;
-  letter-spacing: -0.02em;
-  color: var(--text) !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-right: auto;
-  text-decoration: none !important;
+/* Merapikan Card & Input Form */
+.admin-main .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
 }
 
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, var(--primary) 0%, #437c5b 100%);
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(45, 90, 64, 0.28);
+.admin-main form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1e293b;
+    margin-bottom: 16px;
 }
 
-.nav > a:not(.brand):not(.btn) {
-  font-size: 0.93rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: background-color 0.18s ease, color 0.18s ease;
+.admin-main input[type="text"],
+.admin-main input[type="number"],
+.admin-main input[type="datetime-local"],
+.admin-main input[type="file"],
+.admin-main input:not([type="checkbox"]):not([type="radio"]),
+.admin-main select,
+.admin-main textarea {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
-.nav > a:not(.brand):not(.btn):hover {
-  background-color: var(--primary-soft);
-  color: var(--primary);
+.admin-main input:focus,
+.admin-main select:focus,
+.admin-main textarea:focus {
+    outline: none;
+    border-color: #166534;
+    box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.12);
 }
 
-.nav a[aria-current="page"] {
-  font-weight: 600;
-  color: var(--primary) !important;
-  background-color: var(--primary-soft);
+.admin-main .btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
 }
-
-.nav form {
-  margin: 0;
-}
-
-.account {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--muted);
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  padding: 5px 12px;
-  border-radius: 999px;
-}
-
-/* ---------- Main Content Area ---------- */
-main.container {
-  flex: 1;
-  padding-top: 32px;
-  padding-bottom: 56px;
-}
-
-/* ---------- Typography ---------- */
-h1, h2, h3, h4 {
-  margin-top: 0;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-h2 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.muted {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.eyebrow {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: var(--primary-soft);
-  border: 1px solid rgba(45, 90, 64, 0.15);
-  padding: 4px 11px;
-  border-radius: 999px;
-  margin-bottom: 12px;
-}
-
-/* ---------- Cards & Auth Box ---------- */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow-sm);
-}
-
-.auth-card {
-  max-width: 440px;
-  margin: 28px auto;
-  padding: 36px 32px;
-  box-shadow: var(--shadow-md);
-}
-
-.auth-card h1 {
-  font-size: 1.6rem;
-}
-
-.auth-card .btn {
-  width: 100%;
-  margin-top: 6px;
-  padding: 11px 18px;
-}
-
-/* ---------- Forms & Inputs ---------- */
-form label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-}
-
-form label .muted {
-  display: block;
-  font-weight: 400;
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="file"],
-input:not([type]),
+/* === Tipografi Modern (Plus Jakarta Sans & JetBrains Mono) === */
+body,
+button,
+input,
 select,
 textarea {
-  display: block;
-  width: 100%;
-  margin-top: 6px;
-  padding: 10px 14px;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  font: inherit;
-  font-size: 0.95rem;
-  font-weight: 400;
-  background-color: #ffffff;
-  color: var(--text);
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-input:hover,
-select:hover,
-textarea:hover {
-  border-color: #9eb0a6;
+h1, h2, h3, .brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+    color: #0f172a;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3.5px var(--primary-ring);
+.admin-main h1 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin-bottom: 18px;
 }
 
-textarea {
-  min-height: 96px;
-  resize: vertical;
+/* Font Monospace untuk SKU, Kode Order, & Angka Tabel agar Lurus Rapi */
+td:first-child,
+.price,
+input[type="number"] {
+    font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Buttons ---------- */
-.btn,
-.btn-light,
-.btn-danger,
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 9px 18px;
-  border-radius: var(--radius-sm);
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.92rem;
-  line-height: 1.4;
-  cursor: pointer;
-  border: 1px solid transparent;
-  text-decoration: none !important;
-  transition: all 0.18s ease;
-}
-
-.btn {
-  background: var(--primary);
-  color: #ffffff !important;
-  box-shadow: 0 1px 2px rgba(45, 90, 64, 0.25);
-}
-
-.btn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(45, 90, 64, 0.25);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-light,
-.btn-outline {
-  background: var(--surface);
-  color: var(--text) !important;
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-xs);
-}
-
-.btn-light:hover,
-.btn-outline:hover {
-  background: var(--primary-soft);
-  border-color: var(--primary);
-  color: var(--primary) !important;
-}
-
-.btn-danger {
-  background: var(--danger-bg);
-  color: var(--danger) !important;
-  border-color: var(--danger-border);
-}
-
-.btn-danger:hover {
-  background: #fee4e2;
-  border-color: #fda29b;
-}
-
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 0.84rem;
-}
-
-/* ---------- Product & Admin Grid Cards (M2–M8) ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-  gap: 20px;
-}
-
-.product-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-xs);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: #c2d1c8;
-}
-
-.product-thumb {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background: var(--surface-alt);
-  border-bottom: 1px solid var(--border);
-}
-
-.product-body {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.price {
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-/* ---------- Tables ---------- */
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92rem;
-}
-
-th, td {
-  text-align: left;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-
-th {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  background: var(--surface-alt);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr:hover td {
-  background-color: #fafcfb;
-}
-
-/* ---------- Badges & Status Pills ---------- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  background: var(--primary-soft);
-  color: var(--primary);
-  border: 1px solid rgba(45, 90, 64, 0.16);
-}
-
-.badge-success {
-  background: var(--success-bg);
-  color: var(--success);
-  border-color: var(--success-border);
-}
-
-.badge-warning {
-  background: var(--warning-bg);
-  color: var(--warning);
-  border-color: var(--warning-border);
-}
-
-.badge-danger {
-  background: var(--danger-bg);
-  color: var(--danger);
-  border-color: var(--danger-border);
-}
-
-/* ---------- Footer ---------- */
-.footer {
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-  padding-bottom: 32px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 24px;
-  align-items: center;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
-
-.footer strong {
-  color: var(--text);
-  font-size: 0.96rem;
-}
-
-/* ---------- Responsive Tweaks ---------- */
-@media (max-width: 640px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .auth-card {
-    padding: 26px 20px;
-    margin: 12px auto;
-  }
-
-  h1 {
-    font-size: 1.45rem;
-  }
+code,
+.sku-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
 }

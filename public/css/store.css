@@ -1,5 +1,370 @@
-/* === Peningkatan Tampilan Layout Admin === */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #1e293b;
+    background-color: #f8fafc;
+    line-height: 1.5;
+}
+
+h1, h2, h3, .brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+    color: #0f172a;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+.muted {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* === Announcement Bar & Top Navbar Rapi === */
+.announcement,
+body > div:first-child:not(.container):not(.admin-wrap),
+header > div:first-child:not(.topbar):not(.container) {
+    background-color: #166534;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    letter-spacing: 0.02em;
+    width: 100%;
+}
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
+}
+
+header .container,
+.topbar {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #166534;
+    margin-right: auto;
+}
+
+.topbar nav,
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar nav a,
+header nav a {
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: #334155;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.topbar nav a:hover,
+header nav a:hover {
+    background-color: #f1f5f9;
+    color: #166534;
+}
+
+/* === Tombol & Badge === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: #166534;
+    color: #ffffff;
+    border: 1px solid #166534;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn:hover {
+    background-color: #14532d;
+}
+
+.btn-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-light:hover {
+    background-color: #e2e8f0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* === Card Umum === */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+}
+
+/* === Hero Section === */
+.hero {
+    background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 60%, #ffffff 100%);
+    border: 1px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #166534;
+    background: #dcfce7;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #475569;
+    max-width: 560px;
+    margin-bottom: 18px;
+}
+
+.hero-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: #166534;
+}
+
+.hero-bottom span {
+    background: #ffffff;
+    border: 1px solid #bbf7d0;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+/* === Section Heading & Filter === */
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+}
+
+.filters .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+    margin-bottom: 14px;
+}
+
+.filters .row:last-child {
+    margin-bottom: 0;
+}
+
+.filters label {
+    flex: 1;
+    min-width: 160px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.filters input:not([type="checkbox"]),
+.filters select,
+.input {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 9px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #ffffff;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-reset {
+    font-size: 0.875rem;
+    color: #64748b;
+    text-decoration: underline;
+}
+
+/* === Grid & Kartu Produk === */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.product-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.thumb {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    display: block;
+}
+
+.product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 6px;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #166534;
+    font-variant-numeric: tabular-nums;
+}
+
+.stock {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #15803d;
+    margin-bottom: 8px;
+}
+
+.stock.empty {
+    color: #dc2626;
+}
+
+.product-info .btn-light {
+    margin-top: auto;
+    width: 100%;
+}
+
+/* === Detail Produk === */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+}
+
+/* === Footer === */
+footer {
+    border-top: 1px solid #e2e8f0;
+    background: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 40px;
+}
+
+/* === Layout Admin === */
 .admin-wrap {
     display: flex;
     min-height: 100vh;
@@ -22,6 +387,7 @@
     font-weight: 800;
     margin-bottom: 4px;
     padding: 0 12px;
+    margin-right: 0;
 }
 
 .admin-side .eyebrow {
@@ -79,7 +445,6 @@
     border-bottom: 1px solid #e2e8f0;
 }
 
-/* Merapikan Card & Input Form */
 .admin-main .card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -123,38 +488,13 @@
     box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.12);
 }
 
-.admin-main .btn {
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-}
-/* === Tipografi Modern (Plus Jakarta Sans & JetBrains Mono) === */
-body,
-button,
-input,
-select,
-textarea {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, .brand {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.025em;
-    color: #0f172a;
-}
-
 .admin-main h1 {
     font-size: 1.65rem;
     font-weight: 800;
     margin-bottom: 18px;
 }
 
-/* Font Monospace untuk SKU, Kode Order, & Angka Tabel agar Lurus Rapi */
 td:first-child,
-.price,
 input[type="number"] {
     font-variant-numeric: tabular-nums;
 }

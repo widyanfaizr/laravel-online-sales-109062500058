@@ -16,7 +16,7 @@
             <p>Stok tersedia: {{ $product->stock }}</p>
             
             @auth 
-                @if(auth()->user()->role==='customer' && $product->stock>0 && Route::has('cart.store'))
+                @if(auth()->user()->role==='customer' && $product->stock>0 && \Illuminate\Support\Facades\Route::has('cart.store'))
                     <form method="POST" action="{{ route('cart.store', $product) }}">
                         @csrf
                         <label>Jumlah

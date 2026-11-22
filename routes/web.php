@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\ShippingServiceController;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerOrderController;
 use Illuminate\Support\Facades\Route;
 
 // ---------- Katalog Publik (M4.2) ----------
@@ -29,6 +31,12 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::post('/keranjang/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::patch('/keranjang/{product}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/keranjang/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+    // M6 Checkout dan riwayat pesanan <--- TAMBAHAN M6.7
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index'); // <--- TAMBAHAN M6.7
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store'); // <--- TAMBAHAN M6.7
+    Route::get('/pesanan', [CustomerOrderController::class, 'index'])->name('orders.index'); // <--- TAMBAHAN M6.7
+    Route::get('/pesanan/{order}', [CustomerOrderController::class, 'show'])->name('orders.show'); // <--- TAMBAHAN M6.7
 });
 
 // ---------- Admin (M1, M2, M3) ----------
